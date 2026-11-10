@@ -1,0 +1,5 @@
+﻿7a80cd6 | 2026-11-11 | Dang | docs(HW03): add final report and README
+87d26cf | 2026-11-11 | Dang | test(HW03): add cross-platform testing evidence
+a54c91e | 2026-11-11 | Dang | test(HW03): add GUI bug reports and evidence
+7bc3b99 | 2026-11-11 | Dang | test(HW03): add GUI checklists for admin screens
+686b727 | 2026-11-11 | Dang | docs(HW03): add AI audit and critique

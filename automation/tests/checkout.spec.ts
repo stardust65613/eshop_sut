@@ -1,4 +1,3 @@
-
 import { test, expect, Page, Locator } from '@playwright/test';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -31,18 +30,6 @@ function getTotalAmountInput(page: Page): Locator {
 }
 
 /**
- * Trích xuất tổng tiền từ Backend response.
- */
-function extractBackendTotal(body: any): number {
-  const rawTotal =
-    body?.order?.total_amount ??
-    body?.total_amount ??
-    body?.data?.total_amount;
-
-  return Number(rawTotal);
-}
-
-/**
  * Chuẩn bị trạng thái ban đầu cho Checkout.
  */
 async function prepareCheckout(page: Page): Promise<void> {
@@ -58,12 +45,12 @@ async function prepareCheckout(page: Page): Promise<void> {
     name: 'Sign In'
   }).click();
 
-  await expect(page).toHaveURL(`${config.baseUrl}/`);
+  await expect(page).toHaveURL(`${config.baseUrl}`);
 
   // Thêm sản phẩm vào giỏ hàng.
   for (const item of config.cart_items) {
     const productCard = page
-      .locator('div.border.rounded')
+      .locator('div.border.rounded.shadow-sm')
       .filter({
         has: page.getByRole('heading', {
           name: item.name,
@@ -74,6 +61,10 @@ async function prepareCheckout(page: Page): Promise<void> {
     const addToCartButton = productCard.getByRole('button', {
       name: 'Thêm vào giỏ'
     });
+
+    await expect(addToCartButton).toBeVisible();
+    await expect(addToCartButton).toBeEnabled();
+
 
     for (let i = 0; i < item.quantity; i++) {
       await addToCartButton.click();
@@ -133,7 +124,12 @@ async function submitSuccess(
 
   const responseBody = await response.json();
 
-  expect(extractBackendTotal(responseBody)).toBe(expected.total);
+  const orderResponse = await page.request.get(
+    `http://localhost:3000/api/orders/${responseBody.orderId}`
+  );
+
+  const order = await orderResponse.json();
+  expect(Number(order.total_amount)).toBe(expected.total);
 
   await expect(
     page.getByRole('heading', {
@@ -312,3 +308,4 @@ test.describe('FR-08: Checkout Functionality Automation Suite', () => {
     });
   }
 });
+

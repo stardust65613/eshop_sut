@@ -1,0 +1,347 @@
+commit 77f10546d884ba4781a29ff4285a74f97f4c89b8
+Author: Dang <gnadegreneyugn@gmail.com>
+Date:   Tue Nov 17 16:04:00 2026 +0700
+
+    update test logic
+
+ automation/tests/forgot-password.spec.ts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 9076b31861c7676b8c2dfb610dc960aeb3fa7001
+Author: Dang <gnadegreneyugn@gmail.com>
+Date:   Tue Nov 17 14:47:11 2026 +0700
+
+    Update category management test data
+
+ automation/test-data/category-management.json | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 0802ebcb6a4ef2075f510d744da77813e56a8211
+Author: Dang <gnadegreneyugn@gmail.com>
+Date:   Tue Nov 17 14:04:51 2026 +0700
+
+    Add raw AI-generated test data
+
+ .../test-data-raw-AI/category-management.json      | 121 ++++++++++
+ automation/test-data-raw-AI/checkout.json          | 153 ++++++++++++
+ automation/test-data-raw-AI/forgot-password.json   | 266 +++++++++++++++++++++
+ 3 files changed, 540 insertions(+)
+
+commit c83e3a54d87344ea293bdf243ad5c5d2ce7c015f
+Author: Dang <gnadegreneyugn@gmail.com>
+Date:   Tue Nov 17 14:03:22 2026 +0700
+
+    Add category-management test data
+
+ automation/test-data/category-management.json | 121 ++++++++++++++++++++++++++
+ 1 file changed, 121 insertions(+)
+
+commit a76506a06aff06f60f7eddb78864ca10b3a43484
+Author: Dang <gnadegreneyugn@gmail.com>
+Date:   Tue Nov 17 14:02:40 2026 +0700
+
+    fix: fix navigation and validation scenarios
+
+ automation/tests/category-management.spec.ts | 51 ++++++++++++++++++++++++----
+ 1 file changed, 44 insertions(+), 7 deletions(-)
+
+commit 7d524a3698a0be6428cfce452e18cfccddf30b4a
+Author: Dang <gnadegreneyugn@gmail.com>
+Date:   Tue Nov 17 14:01:24 2026 +0700
+
+    fix: improve category assertions and edge-case coverage
+
+ automation/tests/category-management.spec.ts | 20 ++++++++++++++++----
+ 1 file changed, 16 insertions(+), 4 deletions(-)
+
+commit 7b68042e09189fcd62c0557b59f88bc51fc337eb
+Author: Dang <gnadegreneyugn@gmail.com>
+Date:   Tue Nov 17 13:55:01 2026 +0700
+
+    fix: category navigation locator
+
+ automation/tests/category-management.spec.ts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit c64cca4b5f27123f0128ff7e0374c14b718a0a6d
+Author: Dang <gnadegreneyugn@gmail.com>
+Date:   Tue Nov 17 13:53:34 2026 +0700
+
+    test: add category-crud script test
+
+ automation/tests/category-management.spec.ts | 94 ++++++++++++++++++++++++++++
+ 1 file changed, 94 insertions(+)
+
+commit 09213729939b66f35ba4c669697ecc8bb87e2c0d
+Author: Dang <gnadegreneyugn@gmail.com>
+Date:   Tue Nov 17 13:51:09 2026 +0700
+
+    Add checkout test-data
+
+ automation/test-data/checkout.json | 153 +++++++++++++++++++++++++++++++++++++
+ 1 file changed, 153 insertions(+)
+
+commit 10dff2d755c30d8199f4bd358cfe29e590db061c
+Author: Dang <gnadegreneyugn@gmail.com>
+Date:   Tue Nov 17 13:50:02 2026 +0700
+
+    fix: verify order total using order detail API
+
+ automation/tests/checkout.spec.ts | 29 +++++++++++++----------------
+ 1 file changed, 13 insertions(+), 16 deletions(-)
+
+commit 8d52d564376560101aadcb7296b7310e9a2785a9
+Author: Dang <gnadegreneyugn@gmail.com>
+Date:   Tue Nov 17 13:48:20 2026 +0700
+
+    fix: fix login input locators
+
+ automation/tests/checkout.spec.ts | 15 ++-------------
+ 1 file changed, 2 insertions(+), 13 deletions(-)
+
+commit 4028961244c67df6da0f5d81e36e2a0b0a604213
+Author: Dang <gnadegreneyugn@gmail.com>
+Date:   Tue Nov 17 13:46:48 2026 +0700
+
+    fix: correct data path for test script
+
+ automation/tests/checkout.spec.ts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit fb9b70589d8e76e71e7b5fbbb0785992ccaf9bf8
+Author: Dang <gnadegreneyugn@gmail.com>
+Date:   Tue Nov 17 13:45:40 2026 +0700
+
+    test: add automation script test for checkout feature
+
+ automation/tests/checkout.spec.ts | 325 ++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 325 insertions(+)
+
+commit efb3527cf95b2b4a83206c236e3912c0dfd7d495
+Author: Dang <gnadegreneyugn@gmail.com>
+Date:   Tue Nov 17 13:43:26 2026 +0700
+
+    fix: verify OTP step transition and wait for API response
+
+ automation/tests/forgot-password.spec.ts | 17 +++++++++++++++--
+ 1 file changed, 15 insertions(+), 2 deletions(-)
+
+commit a1103af9eae4fed9c75075f7dd053bc2cfda1f22
+Author: Dang <gnadegreneyugn@gmail.com>
+Date:   Tue Nov 17 13:37:11 2026 +0700
+
+    fix: correct the locator for input field
+
+ automation/tests/forgot-password.spec.ts | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+commit c9f83a90428de000acd208fdd010b3a3a6c90526
+Author: Dang <gnadegreneyugn@gmail.com>
+Date:   Tue Nov 17 13:35:04 2026 +0700
+
+    fix: correct input_wrong_otp behavior
+
+ automation/tests/forgot-password.spec.ts | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit c504af9460b25b025f861bf66f14f5ddf14846d8
+Author: Dang <gnadegreneyugn@gmail.com>
+Date:   Tue Nov 17 13:32:39 2026 +0700
+
+    fix: configure correct data path
+
+ automation/tests/forgot-password.spec.ts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 4fc182e3d969658f3422cfb97d7978cfc61af105
+Author: Dang <gnadegreneyugn@gmail.com>
+Date:   Tue Nov 17 13:30:53 2026 +0700
+
+    Add Automation scripts test for FR-03
+
+ automation/test-data/forgot-password.json | 206 ++++++++++++++++++++++++++++++
+ automation/tests/forgot-password.spec.ts  | 102 +++++++++++++++
+ 2 files changed, 308 insertions(+)
+
+commit 31ada21d7591aa18d8507fe8cc05cfd830eb820d
+Author: Dang <gnadegreneyugn@gmail.com>
+Date:   Wed Nov 11 00:57:48 2026 +0700
+
+    test(HW03): add Android Chrome environment evidence
+
+ HW03/task3/Android-chrome/Environment.jpg | Bin 0 -> 83200 bytes
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit e3a5491e869483e8bb563dcc5da4e2cb1e849e0d
+Author: Dang <gnadegreneyugn@gmail.com>
+Date:   Wed Nov 11 00:55:47 2026 +0700
+
+    docs(HW03): add Git commit history
+
+ HW03/Git_Commit_Log.txt | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+commit 7a80cd6f36cc1255fa8d5cba18926a4e248b63dd
+Author: Dang <gnadegreneyugn@gmail.com>
+Date:   Wed Nov 11 00:54:44 2026 +0700
+
+    docs(HW03): add final report and README
+
+ HW03/README.md  |  56 +++++++++++++++++++++++++++++++
+ HW03/Report.md  | 101 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ HW03/Report.pdf | Bin 0 -> 107515 bytes
+ 3 files changed, 157 insertions(+)
+
+commit 87d26cfb93a1dc021b0480e0448437a5040bbf98
+Author: Dang <gnadegreneyugn@gmail.com>
+Date:   Wed Nov 11 00:54:28 2026 +0700
+
+    test(HW03): add cross-platform testing evidence
+
+ HW03/task3/Android-chrome/bug1.jpg         | Bin 0 -> 89106 bytes
+ HW03/task3/Android-chrome/bug2.jpg         | Bin 0 -> 124962 bytes
+ HW03/task3/Android-chrome/diff1.jpg        | Bin 0 -> 83200 bytes
+ HW03/task3/Android-chrome/diff2.jpg        | Bin 0 -> 88207 bytes
+ HW03/task3/Android-chrome/diff3.jpg        | Bin 0 -> 124719 bytes
+ HW03/task3/Android-chrome/diff4.jpg        | Bin 0 -> 104431 bytes
+ HW03/task3/windows-chrome/Environment.png  | Bin 0 -> 224536 bytes
+ HW03/task3/windows-chrome/bug1.png         | Bin 0 -> 186798 bytes
+ HW03/task3/windows-chrome/bug2_1.png       | Bin 0 -> 204274 bytes
+ HW03/task3/windows-chrome/bug2_2.png       | Bin 0 -> 198007 bytes
+ HW03/task3/windows-firefox/Environment.png | Bin 0 -> 314159 bytes
+ HW03/task3/windows-firefox/bug1.png        | Bin 0 -> 207721 bytes
+ HW03/task3/windows-firefox/bug2.png        | Bin 0 -> 230685 bytes
+ HW03/task3/windows-firefox/diff1.png       | Bin 0 -> 242820 bytes
+ HW03/task3/windows-firefox/diff2.png       | Bin 0 -> 157094 bytes
+ 15 files changed, 0 insertions(+), 0 deletions(-)
+
+commit a54c91ec4c1a42de1773ef701b9fa31fd70fe197
+Author: Dang <gnadegreneyugn@gmail.com>
+Date:   Wed Nov 11 00:54:13 2026 +0700
+
+    test(HW03): add GUI bug reports and evidence
+
+ HW03/bug1.png      | Bin 0 -> 186798 bytes
+ HW03/bug2_1.png    | Bin 0 -> 204274 bytes
+ HW03/bug2_2.png    | Bin 0 -> 198007 bytes
+ HW03/bug_report.md |  14 ++++++++++++++
+ 4 files changed, 14 insertions(+)
+
+commit 7bc3b998a66a9362cdea8f0b500b2dc3997b3d3e
+Author: Dang <gnadegreneyugn@gmail.com>
+Date:   Wed Nov 11 00:53:50 2026 +0700
+
+    test(HW03): add GUI checklists for admin screens
+
+ .../step1_AI_Analysis_Result_conplete.md           |  89 +++++++++++++++++++++
+ .../step2_AI_classify_complete.md                  |  53 ++++++++++++
+ .../step3_AI_interface_aspect_complete.md          |  56 +++++++++++++
+ .../step4_AI_checklist_change.md                   |  23 ++++++
+ .../step4_AI_checklist_incomplete.md               |  19 +++++
+ .../step1_AI_Analysis_Result_conplete.md           |  86 ++++++++++++++++++++
+ .../step2_AI_classify_complete.md                  |  18 +++++
+ HW03/Screen2-admin-category/step3.md               |  39 +++++++++
+ HW03/Screen2-admin-category/step4.md               |  26 ++++++
+ HW03/Screen2-admin-category/step4_change.md        |  23 ++++++
+ HW03/Screen3-admin-login/step1.md                  |  87 ++++++++++++++++++++
+ HW03/Screen3-admin-login/step2.md                  |  32 ++++++++
+ HW03/Screen3-admin-login/step3.md                  |  53 ++++++++++++
+ HW03/Screen3-admin-login/step4.md                  |  21 +++++
+ HW03/Screen3-admin-login/step4_change.md           |  22 +++++
+ HW03/task1/GUI_Checklist_TongHop.xlsx              | Bin 0 -> 14991 bytes
+ 16 files changed, 647 insertions(+)
+
+commit 686b727f8673f9cd607e9eaeae8d139c2180d8e7
+Author: Dang <gnadegreneyugn@gmail.com>
+Date:   Wed Nov 11 00:53:26 2026 +0700
+
+    docs(HW03): add AI audit and critique
+
+ HW03/AI_critique.md   |  25 ++
+ HW03/AI_critique.pdf  | Bin 0 -> 59867 bytes
+ HW03/ai_audit_log.md  | 974 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ HW03/ai_audit_log.pdf | Bin 0 -> 895894 bytes
+ 4 files changed, 999 insertions(+)
+
+commit 85af3ba875c88283615e22cb108f13e2fccaf0e9
+Author: ttbhanh-hcmus <ttbhanh@hcmus.edu.vn>
+Date:   Fri May 15 08:30:35 2026 +0700
+
+    first upload
+
+ README.md                                 |  290 +-
+ api_specification.md                      |  214 +
+ backend/database.js                       |  119 +
+ backend/database.sqlite                   |  Bin 0 -> 36864 bytes
+ backend/package-lock.json                 | 1663 ++++++
+ backend/package.json                      |   20 +
+ backend/server.js                         |  572 ++
+ backend/test_profile.js                   |    8 +
+ frontend-admin/.gitignore                 |   24 +
+ frontend-admin/README.md                  |   16 +
+ frontend-admin/eslint.config.js           |   21 +
+ frontend-admin/index.html                 |   13 +
+ frontend-admin/package-lock.json          | 3681 ++++++++++++
+ frontend-admin/package.json               |   32 +
+ frontend-admin/postcss.config.js          |    6 +
+ frontend-admin/public/favicon.svg         |    1 +
+ frontend-admin/public/icons.svg           |   24 +
+ frontend-admin/src/App.css                |  184 +
+ frontend-admin/src/App.jsx                |  922 +++
+ frontend-admin/src/assets/hero.png        |  Bin 0 -> 13057 bytes
+ frontend-admin/src/assets/react.svg       |    1 +
+ frontend-admin/src/assets/vite.svg        |    1 +
+ frontend-admin/src/index.css              |    8 +
+ frontend-admin/src/main.jsx               |   10 +
+ frontend-admin/tailwind.config.js         |   11 +
+ frontend-admin/vite.config.js             |   11 +
+ frontend-mobile/.gitignore                |   41 +
+ frontend-mobile/App.js                    | 1300 +++++
+ frontend-mobile/app.json                  |   29 +
+ frontend-mobile/assets/adaptive-icon.png  |  Bin 0 -> 17547 bytes
+ frontend-mobile/assets/favicon.png        |  Bin 0 -> 1466 bytes
+ frontend-mobile/assets/icon.png           |  Bin 0 -> 22380 bytes
+ frontend-mobile/assets/splash-icon.png    |  Bin 0 -> 17547 bytes
+ frontend-mobile/index.js                  |    8 +
+ frontend-mobile/package-lock.json         | 8773 +++++++++++++++++++++++++++++
+ frontend-mobile/package.json              |   18 +
+ frontend-web/.gitignore                   |   24 +
+ frontend-web/README.md                    |   16 +
+ frontend-web/eslint.config.js             |   21 +
+ frontend-web/index.html                   |   13 +
+ frontend-web/package-lock.json            | 3681 ++++++++++++
+ frontend-web/package.json                 |   32 +
+ frontend-web/postcss.config.js            |    6 +
+ frontend-web/public/favicon.svg           |    1 +
+ frontend-web/public/icons.svg             |   24 +
+ frontend-web/src/App.css                  |  184 +
+ frontend-web/src/App.jsx                  |   71 +
+ frontend-web/src/assets/hero.png          |  Bin 0 -> 13057 bytes
+ frontend-web/src/assets/react.svg         |    1 +
+ frontend-web/src/assets/vite.svg          |    1 +
+ frontend-web/src/context/AuthContext.jsx  |   50 +
+ frontend-web/src/context/CartContext.jsx  |   36 +
+ frontend-web/src/index.css                |   14 +
+ frontend-web/src/main.jsx                 |   10 +
+ frontend-web/src/pages/Cart.jsx           |   79 +
+ frontend-web/src/pages/Checkout.jsx       |  151 +
+ frontend-web/src/pages/ForgotPassword.jsx |  100 +
+ frontend-web/src/pages/Home.jsx           |  116 +
+ frontend-web/src/pages/Login.jsx          |   69 +
+ frontend-web/src/pages/ProductDetail.jsx  |   73 +
+ frontend-web/src/pages/Profile.jsx        |  217 +
+ frontend-web/src/pages/Register.jsx       |   83 +
+ frontend-web/tailwind.config.js           |   11 +
+ frontend-web/vite.config.js               |    7 +
+ run_servers.sh                            |    5 +
+ setup_guide.md                            |  117 +
+ 66 files changed, 23232 insertions(+), 2 deletions(-)
+
+commit 2f9bf2bab45855abf211377a5d5eba10031649e3
+Author: Hanh Tran <ttbhanh@fit.hcmus.edu.vn>
+Date:   Fri May 15 08:27:44 2026 +0700
+
+    Initial commit
+
+ README.md | 2 ++
+ 1 file changed, 2 insertions(+)

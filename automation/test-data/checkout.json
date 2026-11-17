@@ -1,0 +1,153 @@
+{
+  "config": {
+    "baseUrl": "http://localhost:5173",
+    "credentials": {
+      "email": "test@eshop.com",
+      "password": "Test1234!"
+    },
+    "cart_items": [
+      {
+        "name": "iPhone 15 Pro Max",
+        "quantity": 1
+      },
+      {
+        "name": "Samsung Galaxy S24 Ultra",
+        "quantity": 1
+      }
+    ],
+    "expected_cart_total": 58000000
+  },
+  "test_data": {
+    "TC_01": {
+      "description": "Thanh toán thành công với giá trị mặc định từ giỏ hàng",
+      "editableTotal": null,
+      "action": "submit_default",
+      "expected": {
+        "result": "success",
+        "total": 58000000,
+        "heading": "Thanh toán thành công!"
+      }
+    },
+    "TC_02": {
+      "description": "Kiểm tra hệ thống tự tính lại tổng tiền đúng khi người dùng cố tình thay đổi/nhập giá trị khác trên Web",
+      "editableTotal": 50000000,
+      "action": "submit_success",
+      "expected": {
+        "result": "success",
+        "total": 58000000,
+        "heading": "Thanh toán thành công!"
+      }
+    },
+    "TC_03": {
+      "description": "Kiểm tra nút Back của trình duyệt",
+      "editableTotal": null,
+      "action": "browser_back",
+      "expected": {
+        "url": "/cart",
+        "cartItemCount": 2
+      }
+    },
+    "TC_04": {
+      "description": "Kiểm tra chặn ký tự chữ cái và ký tự đặc biệt",
+      "editableTotal": "abc@#$",
+      "action": "validate_numeric_input",
+      "expected": {
+        "inputValue": ""
+      }
+    },
+    "TC_05": {
+      "description": "Kiểm tra giá trị số âm",
+      "editableTotal": -1000,
+      "action": "submit_failure",
+      "expected": {
+        "result": "failure",
+        "minStatus": 400,
+        "dialogMessage": "Lỗi khi thanh toán",
+        "url": "/checkout"
+      }
+    },
+    "TC_06": {
+      "description": "Kiểm tra cơ chế tự tính toán và xử lý của Backend (nhập 0)",
+      "editableTotal": 0,
+      "action": "submit_success",
+      "expected": {
+        "result": "success",
+        "total": 58000000,
+        "heading": "Thanh toán thành công!"
+      }
+    },
+    "TC_07": {
+      "description": "Kiểm tra cho phép số thập phân",
+      "editableTotal": 363632.18282828,
+      "action": "submit_success",
+      "expected": {
+        "result": "success",
+        "inputValue": "363632.18282828",
+        "total": 58000000,
+        "heading": "Thanh toán thành công!"
+      }
+    },
+    "TC_BVA_01": {
+      "description": "Biên dưới - Nhập giá trị âm ngoài biên",
+      "editableTotal": -1,
+      "action": "submit_failure",
+      "expected": {
+        "result": "failure",
+        "minStatus": 400,
+        "dialogMessage": "Lỗi khi thanh toán",
+        "url": "/checkout"
+      }
+    },
+    "TC_BVA_02": {
+      "description": "Biên dưới - Nhập giá trị biên 0 trên Web",
+      "editableTotal": 0,
+      "action": "submit_success",
+      "expected": {
+        "result": "success",
+        "total": 58000000,
+        "heading": "Thanh toán thành công!"
+      }
+    },
+    "TC_BVA_03": {
+      "description": "Biên dưới - Nhập giá trị 1 (ngay trên biên) trên Web",
+      "editableTotal": 1,
+      "action": "submit_success",
+      "expected": {
+        "result": "success",
+        "total": 58000000,
+        "heading": "Thanh toán thành công!"
+      }
+    },
+    "TC_BVA_04": {
+      "description": "Biên trên - Nhập số lớn thông thường trên Web",
+      "editableTotal": 999999999,
+      "action": "submit_success",
+      "expected": {
+        "result": "success",
+        "total": 58000000,
+        "heading": "Thanh toán thành công!"
+      }
+    },
+    "TC_BVA_05": {
+      "description": "Biên trên - Nhập ngưỡng biên kỹ thuật cao trên Web",
+      "editableTotal": 2147483647,
+      "action": "submit_success",
+      "expected": {
+        "result": "success",
+        "total": 58000000,
+        "heading": "Thanh toán thành công!"
+      }
+    },
+    "TC_BVA_06": {
+      "description": "Biên trên - Nhập chuỗi số cực dài ngoài biên kỹ thuật",
+      "editableTotal": "999999999999999999999999999999",
+      "action": "submit_failure",
+      "expected": {
+        "result": "failure",
+        "minStatus": 400,
+        "dialogMessage": "Lỗi khi thanh toán",
+        "url": "/checkout"
+      }
+    }
+  }
+}

@@ -2,6 +2,11 @@ import { test, expect } from '@playwright/test';
 import * as fs from 'fs';
 import * as path from 'path';
 
+// Helper xử lý dữ liệu chứa ký hiệu đặc biệt
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 // Đọc dữ liệu từ file JSON riêng biệt theo hướng Data-Driven
 const dataPath = path.join(__dirname, '../test-data/category-management.json');
 const testData = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
@@ -53,9 +58,9 @@ test.describe('FR-14: Quản lý danh mục (Category Management CRUD) - Data-Dr
         // Kiểm tra kết quả mong đợi dựa theo từng loại expectedType
         if (tc.expectedType === 'success') {
           // Assertion 2 (Kiểu 2 - toContainText): Xác thực tên danh mục xuất hiện trong bảng danh sách
-          const categoryRow = page.getByRole('row', { name: new RegExp(tc.categoryName, 'i') });
-          await expect(categoryRow).toBeVisible();
-          await expect(categoryRow).toContainText(tc.categoryName);
+          const categoryRow = page.getByRole('row', { name: new RegExp(escapeRegExp(tc.categoryName), 'i') });
+          await expect(categoryRow.last()).toBeVisible();
+          await expect(categoryRow.last()).toContainText(tc.categoryName);
         } 
         else if (tc.expectedType === 'validation_error') {
           // Assertion 3 (Kiểu 3 - toHaveAttribute / not.toBeVisible): Trường rỗng/khoảng trắng bị chặn bởi thuộc tính required hoặc không thêm dòng mới
@@ -64,13 +69,20 @@ test.describe('FR-14: Quản lý danh mục (Category Management CRUD) - Data-Dr
         else if (tc.expectedType === 'graceful_handling') {
           // Assertion 4: Kiểm tra hệ thống xử lý chuỗi cực lớn mà không bị crash giao diện (vẫn hiển thị form/table)
           await expect(page.getByRole('button', { name: 'Thêm mới' })).toBeVisible();
+
+          const categoryRow = page.getByRole('row', {
+            name: new RegExp(`A{10000}`)
+          });
+
+          await expect(categoryRow.last()).toBeVisible();
+          await expect(categoryRow.last()).toContainText('A'.repeat(10000));
         }
       } 
       
       // Xử lý nhóm Test Cases xóa danh mục (Delete)
       else if (tc.action === 'delete') {
         const targetName = tc.targetCategoryName;
-        const row = page.getByRole('row', { name: new RegExp(targetName, 'i') });
+        const row = page.getByRole('row', { name: new RegExp(escapeRegExp(targetName), 'i') }).last();
         
         // Đảm bảo danh mục tồn tại trước khi xóa
         await expect(row).toBeVisible();

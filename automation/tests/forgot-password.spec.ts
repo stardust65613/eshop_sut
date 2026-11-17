@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 // Đọc dữ liệu từ file JSON bên ngoài (đảm bảo không hardcode test data trong script)
-const dataPath = path.join(__dirname, 'forgot-password.json');
+const dataPath = path.join(__dirname, '../test-data/forgot-password.json');
 const testDataFile = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
 
 test.describe('FR-03: Forgot Password & Password Reset Automation Suite', () => {

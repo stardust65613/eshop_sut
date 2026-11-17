@@ -1,0 +1,121 @@
+{
+  "environment": {
+    "baseUrl": "http://localhost:5174",
+    "adminCredentials": {
+      "email": "admin@eshop.com",
+      "password": "Admin123!"
+    }
+  },
+  "testCases": [
+    {
+      "testCaseId": "TC_ADD_CAT_01",
+      "title": "Kiểm tra thêm danh mục thành công với chữ cái tiếng Việt",
+      "categoryName": "Điện thoại",
+      "inputMethod": "fill",
+      "action": "submit",
+      "expectedType": "success"
+    },
+    {
+      "testCaseId": "TC_ADD_CAT_02",
+      "title": "Kiểm tra thêm danh mục thành công với chữ số",
+      "categoryName": "2026",
+      "inputMethod": "fill",
+      "action": "submit",
+      "expectedType": "success"
+    },
+    {
+      "testCaseId": "TC_ADD_CAT_03",
+      "title": "Kiểm tra thêm danh mục thành công với ký tự đặc biệt",
+      "categoryName": "Dụng cụ @#$",
+      "inputMethod": "fill",
+      "action": "submit",
+      "expectedType": "success"
+    },
+    {
+      "testCaseId": "TC_ADD_CAT_04",
+      "title": "Kiểm tra thêm danh mục thành công với chuỗi kết hợp chữ, số và ký tự đặc biệt",
+      "categoryName": "Áo thun nam - Mẫu 2026!",
+      "inputMethod": "fill",
+      "action": "submit",
+      "expectedType": "success"
+    },
+    {
+      "testCaseId": "TC_ADD_CAT_05_AND_BVA_05",
+      "title": "Kiểm tra thêm danh mục bằng cách copy/paste chuỗi ký tự cực lớn (10,000 ký tự)",
+      "categoryName": "HUGE_10000_A",
+      "inputMethod": "paste_10000_a",
+      "action": "submit",
+      "expectedType": "graceful_handling"
+    },
+    {
+      "testCaseId": "TC_ADD_CAT_06_AND_BVA_01",
+      "title": "Kiểm tra báo lỗi khi để trống trường Tên danh mục (Ngoài biên dưới 0 ký tự)",
+      "categoryName": "",
+      "inputMethod": "fill",
+      "action": "submit",
+      "expectedType": "validation_error"
+    },
+    {
+      "testCaseId": "TC_ADD_CAT_07",
+      "title": "Kiểm tra báo lỗi khi tên danh mục chỉ chứa toàn khoảng trắng",
+      "categoryName": "   ",
+      "inputMethod": "fill",
+      "action": "submit",
+      "expectedType": "validation_error"
+    },
+    {
+      "testCaseId": "TC_ADD_CAT_08",
+      "title": "Kiểm tra luồng phụ: Bấm nút Quay về (Back) của browser sau khi nhập tên danh mục",
+      "categoryName": "Máy tính bảng",
+      "inputMethod": "fill",
+      "action": "browser_back",
+      "expectedType": "not_saved"
+    },
+    {
+      "testCaseId": "TC_BVA_CAT_02",
+      "title": "Kiểm tra thêm mới thành công tại Trên biên dưới (1 ký tự)",
+      "categoryName": "A",
+      "inputMethod": "fill",
+      "action": "submit",
+      "expectedType": "success"
+    },
+    {
+      "testCaseId": "TC_BVA_CAT_03",
+      "title": "Kiểm tra thêm mới thành công điểm Trong biên (Độ dài tiêu chuẩn)",
+      "categoryName": "Thời trang nam",
+      "inputMethod": "fill",
+      "action": "submit",
+      "expectedType": "success"
+    },
+    {
+      "testCaseId": "TC_BVA_CAT_04",
+      "title": "Kiểm tra thêm mới thành công tại điểm Trên biên kỹ thuật tối đa (255 ký tự)",
+      "categoryName": "Cat_01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890",
+      "inputMethod": "fill",
+      "action": "submit",
+      "expectedType": "success"
+    },
+    {
+      "testCaseId": "TC_BVA_CAT_06",
+      "title": "Kiểm tra Luồng phụ tại điểm Trên biên dưới: Bấm Back browser",
+      "categoryName": "X",
+      "inputMethod": "fill",
+      "action": "browser_back",
+      "expectedType": "not_saved"
+    },
+    {
+      "testCaseId": "TC_DEL_CAT_01",
+      "title": "Kiểm tra xóa trực tiếp danh mục trống thành công",
+      "targetCategoryName": "Phụ kiện cũ",
+      "action": "delete",
+      "expectedType": "delete_success"
+    },
+    {
+      "testCaseId": "TC_DEL_CAT_02",
+      "title": "Kiểm tra từ chối xóa khi danh mục đang chứa sản phẩm",
+      "targetCategoryName": "Điện thoại",
+      "action": "delete",
+      "expectedType": "delete_error_500"
+    }
+  ]
+}

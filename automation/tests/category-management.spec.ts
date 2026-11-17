@@ -18,7 +18,7 @@ test.describe('FR-14: Quản lý danh mục (Category Management CRUD) - Data-Dr
     await page.getByRole('button', { name: 'Login' }).click();
 
     // Điều hướng sang tab Quản lý Danh mục trên Admin Dashboard
-    await page.getByRole('listitem', { name: 'Danh mục' }).click();
+    await page.getByText('Danh mục', { exact: true }).click();
   });
 
   // Duyệt qua toàn bộ danh sách test cases từ JSON để chạy tự động theo mô hình Data-Driven

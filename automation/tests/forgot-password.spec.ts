@@ -16,7 +16,7 @@ test.describe('FR-03: Forgot Password & Password Reset Automation Suite', () => 
   for (const tc of testDataFile.testCases) {
     test(`${tc.testCaseId}: ${tc.description}`, async ({ page }) => {
       // 1. Tương tác Bước 1: Nhập email và bấm Lấy mã OTP
-      const emailInput = page.getByRole('textbox', { name: /nhập email của bạn/i });
+      const emailInput = page.locator('input[required]').first(); 
       await emailInput.fill(tc.email);
 
       const getOtpButton = page.getByRole('button', { name: 'Lấy mã OTP' });
@@ -44,8 +44,8 @@ test.describe('FR-03: Forgot Password & Password Reset Automation Suite', () => 
       const match = otpText?.match(/\d+/);
       const displayedOtp = match ? match[0] : '1234';
 
-      const otpInput = page.getByRole('textbox', { name: /mã otp/i });
-      const passwordInput = page.getByRole('textbox', { name: /mật khẩu mới/i });
+      const otpInput = page.locator('input[required]').first();
+      const passwordInput = page.locator('input[type="password"]');
       const submitButton = page.getByRole('button', { name: 'Đặt lại mật khẩu' });
 
       // Xử lý giá trị OTP dựa trên otpBehavior từ test data

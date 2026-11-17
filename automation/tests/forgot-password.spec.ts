@@ -20,7 +20,20 @@ test.describe('FR-03: Forgot Password & Password Reset Automation Suite', () => 
       await emailInput.fill(tc.email);
 
       const getOtpButton = page.getByRole('button', { name: 'Lấy mã OTP' });
-      await getOtpButton.click();
+      
+      const otpContainer = page.locator('.bg-green-100');
+
+      if (tc.email === '') {
+        await getOtpButton.click();
+      } else {
+        const responsePromise = page.waitForResponse(response =>
+            response.url().includes('/api/forgot-password') &&
+            response.request().method() === 'POST'
+        );
+
+        await getOtpButton.click();
+        await responsePromise;
+      }
 
       // Xử lý các test case dừng lại ở Bước 1 (email lỗi, để trống, không tồn tại...)
       if (tc.step2Action === null) {
@@ -30,12 +43,12 @@ test.describe('FR-03: Forgot Password & Password Reset Automation Suite', () => 
         } else {
           // Kiểm tra hệ thống không chuyển sang màn hình 2 (vẫn hiển thị nút Lấy mã OTP) (Assertion kiểu 2: toBeVisible)
           await expect(getOtpButton).toBeVisible();
+          await expect(otpContainer).toHaveCount(0);
         }
         return;
       }
 
       // 2. Xử lý tại Bước 2 (Khi đã chuyển màn hình nhập OTP)
-      const otpContainer = page.locator('.bg-green-100');
       // Assertion kiểu 3: toContainText kiểm tra khối hiển thị mã OTP động xuất hiện
       await expect(otpContainer).toContainText('Mã OTP của bạn là:');
 

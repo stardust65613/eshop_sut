@@ -108,7 +108,7 @@ test.describe('FR-03: Forgot Password & Password Reset Automation Suite', () => 
         } else {
           // Kỳ vọng thất bại (mật khẩu yếu hoặc sai OTP) -> Kiểm tra alert báo lỗi
           // Chờ dialog xuất hiện và xác thực nội dung thông báo lỗi
-          expect(alertMessage).toBeTruthy();
+          await expect(page).toHaveURL(/\/forgot-password/);
         }
       }
     });

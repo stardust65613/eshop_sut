@@ -48,19 +48,8 @@ function extractBackendTotal(body: any): number {
 async function prepareCheckout(page: Page): Promise<void> {
   await page.goto(`${config.baseUrl}/login`);
 
-  const usernameInput = page
-    .locator('div')
-    .filter({
-      has: page.getByText('Username', { exact: true })
-    })
-    .getByRole('textbox');
-
-  const passwordInput = page
-    .locator('div')
-    .filter({
-      has: page.getByText('Mật khẩu', { exact: true })
-    })
-    .getByRole('textbox');
+  const usernameInput = page.locator('input[required]').nth(0);
+  const passwordInput = page.locator('input[required]').nth(1);
 
   await usernameInput.fill(config.credentials.email);
   await passwordInput.fill(config.credentials.password);

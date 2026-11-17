@@ -54,7 +54,8 @@ test.describe('FR-03: Forgot Password & Password Reset Automation Suite', () => 
         await otpInput.fill('');
       } else if (tc.otpBehavior === 'input_wrong_numeric') {
         // Nhập sai số (khác với OTP đang hiển thị)
-        await otpInput.fill('9999');
+        const wrongOtp = displayedOtp === '9999' ? '8888' : '9999';
+        await otpInput.fill(wrongOtp);
       } else if (tc.otpBehavior === 'input_wrong_alphanumeric') {
         // Nhập chứa chữ/ký tự đặc biệt không khớp
         await otpInput.fill('abcd');

@@ -47,11 +47,36 @@ test.describe('FR-14: Quản lý danh mục (Category Management CRUD) - Data-Dr
 
         // Thực hiện hành động theo kịch bản (Browser Back hoặc Bấm nút Thêm mới)
         if (tc.action === 'browser_back') {
-          await page.goBack();
-          // Assertion 1 (Kiểu 1 - toBeVisible / toHaveURL): Xác thực quay về trang trước, không lưu danh mục
-          await expect(page).toHaveURL(/login|dashboard/);
+          await page.getByText('Dashboard', { exact: true }).click();
+
+          await expect(
+            page.getByRole('heading', { name: 'Dashboard' })
+          ).toBeVisible();
+
+          // Quay lại tab Danh mục
+          await page.getByText('Danh mục', { exact: true }).click();
+
+          await expect(
+            page.getByRole('heading', { name: 'Quản lý Danh mục' })
+          ).toBeVisible();
+
+          // Kiểm tra danh mục nhập không được thêm vào trong list danh mục
+          const categoryRow = page.getByRole('row').filter({
+            has: page.getByRole('cell', {
+              name: new RegExp(`^${escapeRegExp(tc.categoryName)}$`, 'i')
+            })
+          });
+
+          await expect(categoryRow).toHaveCount(0);
+
           return;
         }
+
+        const categoryRows = page.getByRole('row').filter({
+          has: page.getByRole('button', { name: 'Xóa' })
+        });
+
+        const countBefore = await categoryRows.count();
 
         await page.getByRole('button', { name: 'Thêm mới' }).click();
 
@@ -64,7 +89,8 @@ test.describe('FR-14: Quản lý danh mục (Category Management CRUD) - Data-Dr
         } 
         else if (tc.expectedType === 'validation_error') {
           // Assertion 3 (Kiểu 3 - toHaveAttribute / not.toBeVisible): Trường rỗng/khoảng trắng bị chặn bởi thuộc tính required hoặc không thêm dòng mới
-          await expect(inputField).toHaveAttribute('required', '');
+          await page.waitForTimeout(1000);
+          await expect(categoryRows).toHaveCount(countBefore);
         }
         else if (tc.expectedType === 'graceful_handling') {
           // Assertion 4: Kiểm tra hệ thống xử lý chuỗi cực lớn mà không bị crash giao diện (vẫn hiển thị form/table)
@@ -88,18 +114,29 @@ test.describe('FR-14: Quản lý danh mục (Category Management CRUD) - Data-Dr
         await expect(row).toBeVisible();
 
         // Bấm nút Xóa tương ứng với dòng danh mục
-        await row.getByRole('button', { name: 'Xóa' }).click();
+        
 
         if (tc.expectedType === 'delete_success') {
           // Assertion (Kiểu 5 - not.toBeVisible): Danh mục trống bị xóa thành công và biến mất khỏi bảng
-          await expect(page.getByRole('row', { name: new RegExp(targetName, 'i') })).not.toBeVisible();
+          await row.getByRole('button', { name: 'Xóa' }).click();
+          await expect(page.getByRole('row', { name: new RegExp(escapeRegExp(targetName), 'i') })).not.toBeVisible();
         } 
         else if (tc.expectedType === 'delete_error_500') {
           // Assertion (Kiểu 6 - toBeVisible): Danh mục chứa sản phẩm bị từ chối xóa, vẫn được giữ nguyên trên giao diện
+          const deleteResponse = page.waitForResponse(response =>
+            response.request().method() === 'DELETE' &&
+            response.url().includes('/api/categories/')
+          );
+
+          await row.getByRole('button', { name: 'Xóa' }).click();
+          const response = await deleteResponse;
+
+          expect(response.status()).toBe(500);
+
+          // Danh mục vẫn được giữ nguyên trên giao diện
           await expect(row).toBeVisible();
         }
       }
-
     });
   }
 

@@ -7,7 +7,7 @@ import * as path from 'path';
 // 1. LOAD TEST DATA
 // ============================================================
 
-const dataFilePath = path.resolve(__dirname, 'data', 'checkout.json');
+const dataFilePath = path.resolve(__dirname, '../test-data/checkout.json');
 const rawData = JSON.parse(fs.readFileSync(dataFilePath, 'utf-8'));
 
 const { config, test_data: testData } = rawData;

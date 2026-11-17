@@ -10,7 +10,7 @@
     {
       "testCaseId": "TC_ADD_CAT_01",
       "title": "Kiểm tra thêm danh mục thành công với chữ cái tiếng Việt",
-      "categoryName": "Điện thoại",
+      "categoryName": "Quần Áo",
       "inputMethod": "fill",
       "action": "submit",
       "expectedType": "success"
